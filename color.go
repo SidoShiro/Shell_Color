@@ -32,3 +32,23 @@ func YellowPrintln(str string) {
 func BluePrintln(str string) {
 	fmt.Println("\033[0;" + strconv.Itoa(blueShellColorNum) + "m" + str + "\033[0m")
 }
+
+func GreenPrint(str string) {
+	fmt.Print("\033[0;" + strconv.Itoa(greenShellColorNum) + "m" + str + "\033[0m")
+}
+
+func CyanPrint(str string) {
+	fmt.Print("\033[0;" + strconv.Itoa(cyanShellColorNum) + "m" + str + "\033[0m")
+}
+
+func RedPrint(str string) {
+	fmt.Print("\033[0;" + strconv.Itoa(redShellColorNum) + "m" + str + "\033[0m")
+}
+
+func YellowPrint(str string) {
+	fmt.Print("\033[0;" + strconv.Itoa(yellowShellColorNum) + "m" + str + "\033[0m")
+}
+
+func BluePrint(str string) {
+	fmt.Print("\033[0;" + strconv.Itoa(blueShellColorNum) + "m" + str + "\033[0m")
+}

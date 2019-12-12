@@ -14,6 +14,12 @@ CyanPrintln(str string)
 RedPrintln(str string)
 YellowPrintln(str string)
 BluePrintln(str string)
+
+GreenPrint(str string)
+CyanPrint(str string)
+RedPrint(str string)
+YellowPrint(str string)
+BluePrint(str string)
 ```
 
 ## TODO
