@@ -2,62 +2,108 @@ package shell_color
 
 import (
 	"fmt"
-	"strconv"
 )
 
 const (
-	whiteShellColorNum  = 30
-	redShellColorNum    = 31
-	greenShellColorNum  = 32
-	cyanShellColorNum   = 36
-	yellowShellColorNum = 33
-	blueShellColorNum   = 34
+	// whiteShellColorNum  = 30
+	redShellColorNum    = "31"
+	greenShellColorNum  = "32"
+	yellowShellColorNum = "33"
+	blueShellColorNum   = "34"
+	cyanShellColorNum   = "36"
+	start               = "\033[0;"
+	end                 = "\033[0m"
 )
 
-const start string = "\033[0;"
-const end string = "\033[0m"
-
-func Output(color int, str string) string {
-	ss := "\033[0;" + strconv.Itoa(color) + "m" + str + "\033[0m"
+// output uses fmt.Sprint and a set of colors to output a colored string
+func output(color string, v ...interface{}) string {
+	ss := start + color + "m" + fmt.Sprint(v...) + end
 	return ss
 }
 
-func GreenPrintln(str string) {
-	fmt.Println(Output(greenShellColorNum, str))
-}
+// GreenSprint formats using the default formats for its operands and returns
+// the resulting string. Spaces are added between operand when neither is a
+// string. The string is now Green colored.
+func GreenSprint(v ...interface{}) string { return output(greenShellColorNum, v...) }
 
-func CyanPrintln(str string) {
-	fmt.Println(Output(cyanShellColorNum, str))
-}
+// CyanSprint formats using the default formats for its operands and returns
+// the resulting string. Spaces are added between operand when neither is a
+// string. The string is now Cyan colored.
+func CyanSprint(v ...interface{}) string { return output(cyanShellColorNum, v...) }
 
-func RedPrintln(str string) {
-	fmt.Println(Output(redShellColorNum, str))
-}
+// RedSprint formats using the default formats for its operands and returns
+// the resulting string. Spaces are added between operand when neither is a
+// string. The string is now Red colored.
+func RedSprint(v ...interface{}) string { return output(redShellColorNum, v...) }
 
-func YellowPrintln(str string) {
-	fmt.Println(Output(yellowShellColorNum, str))
-}
+// YellowSprint formats using the default formats for its operands and returns
+// the resulting string. Spaces are added between operand when neither is a
+// string. The string is now Yellow colored.
+func YellowSprint(v ...interface{}) string { return output(yellowShellColorNum, v...) }
 
-func BluePrintln(str string) {
-	fmt.Println(Output(blueShellColorNum, str))
-}
+// BlueSprint formats using the default formats for its operands and returns
+// the resulting string. Spaces are added between operand when neither is a
+// string. The string is now Blue colored.
+func BlueSprint(v ...interface{}) string { return output(blueShellColorNum, v...) }
 
-func GreenPrint(str string) {
-	fmt.Print(Output(greenShellColorNum, str))
-}
+// GreenPrintln formats using the default formats for its operands and writes
+// to standard output. Spaces are always added bewteen operands and a newline is
+// appended. The string is now Green colored. It returns the number of bytes
+// written and any write error encountered.
+func GreenPrintln(v ...interface{}) (int, error) { return fmt.Println(GreenSprint(v...)) }
 
-func CyanPrint(str string) {
-	fmt.Print(Output(cyanShellColorNum, str))
-}
+// CyanPrintln formats using the default formats for its operands and writes
+// to standard output. Spaces are always added bewteen operands and a newline is
+// appended. The string is now Cyan colored. It returns the number of bytes
+// written and any write error encountered.
+func CyanPrintln(v ...interface{}) (int, error) { return fmt.Println(CyanSprint(v...)) }
 
-func RedPrint(str string) {
-	fmt.Print(Output(redShellColorNum, str))
-}
+// RedPrintln formats using the default formats for its operands and writes
+// to standard output. Spaces are always added bewteen operands and a newline is
+// appended. The string is now Red colored. It returns the number of bytes
+// written and any write error encountered.
+func RedPrintln(v ...interface{}) (int, error) { return fmt.Println(RedSprint(v...)) }
 
-func YellowPrint(str string) {
-	fmt.Print(Output(yellowShellColorNum, str))
-}
+// YellowPrintln formats using the default formats for its operands and writes
+// to standard output. Spaces are always added bewteen operands and a newline is
+// appended. The string is now Yellow colored. It returns the number of bytes
+// written and any write error encountered.
+func YellowPrintln(v ...interface{}) (int, error) { return fmt.Println(YellowSprint(v...)) }
 
-func BluePrint(str string) {
-	fmt.Print(Output(blueShellColorNum, str))
-}
+// BluePrintln formats using the default formats for its operands and writes
+// to standard output. Spaces are always added bewteen operands and a newline is
+// appended. The string is now Blue colored. It returns the number of bytes
+// written and any write error encountered.
+func BluePrintln(v ...interface{}) (int, error) { return fmt.Println(BlueSprint(v...)) }
+
+// func Print(v ...interface{}) { fmt.Print(Sprint(v...)) }
+
+// GreenPrint formats using the default formats for its operands and writes to
+// standard output. Spaces are added between operands when neither is a string.
+// The string is now Green colored. It returns the number of bytes written and
+// anny write error encountered.
+func GreenPrint(v ...interface{}) (int, error) { return fmt.Print(GreenSprint(v...)) }
+
+// CyanPrint formats using the default formats for its operands and writes to
+// standard output. Spaces are added between operands when neither is a string.
+// The string is now Cyan colored. It returns the number of bytes written and
+// anny write error encountered.
+func CyanPrint(v ...interface{}) (int, error) { return fmt.Print(CyanSprint(v...)) }
+
+// RedPrint formats using the default formats for its operands and writes to
+// standard output. Spaces are added between operands when neither is a string.
+// The string is now Red colored. It returns the number of bytes written and
+// anny write error encountered.
+func RedPrint(v ...interface{}) (int, error) { return fmt.Print(RedSprint(v...)) }
+
+// YellowPrint formats using the default formats for its operands and writes to
+// standard output. Spaces are added between operands when neither is a string.
+// The string is now Yellow colored. It returns the number of bytes written and
+// anny write error encountered.
+func YellowPrint(v ...interface{}) (int, error) { return fmt.Print(YellowSprint(v...)) }
+
+// BluePrint formats using the default formats for its operands and writes to
+// standard output. Spaces are added between operands when neither is a string.
+// The string is now Blue colored. It returns the number of bytes written and
+// anny write error encountered.
+func BluePrint(v ...interface{}) (int, error) { return fmt.Print(BlueSprint(v...)) }
